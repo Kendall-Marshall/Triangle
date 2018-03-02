@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BombMvmt : MonoBehaviour {
 	public GameObject Player;
 	public Sprite LossSprite;
+	public Material Red;
 	public float finalSize;
 	public static bool check = false;
 	public static bool BombClickCheck = false;
@@ -83,6 +84,7 @@ public class BombMvmt : MonoBehaviour {
 		MainScript.runCheck = true;
 		float currentTime = 0.0f;
 		spr.sprite = LossSprite;
+		Player.GetComponent<SpriteRenderer>().material = Red;
 
 		Vector3 originalScale = new Vector3(0.1f, 0.1f, 0.1f);
 		Vector3 destinationScale = new Vector3(0.3f, 0.3f, 0.3f);

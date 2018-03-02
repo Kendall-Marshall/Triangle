@@ -6,14 +6,17 @@ using UnityEngine.UI;
 public class MainScript : MonoBehaviour {
 	public GameObject obj;
 	public GameObject bomb;
+	public GameObject panel;
 	public Button but;
 	public GameObject Hide;
 	public GameObject Enable;
 	public static bool runCheck;
 	public Text HighScoreText;
+	Renderer rend;
 
 	void Start () {
 		Button btn = but.GetComponent<Button>();
+		rend = panel.GetComponent<Renderer> ();
 		btn.onClick.AddListener(OnClick);
 		HighScoreText.text = PlayerPrefs.GetInt ("HighScore").ToString();
 	}
@@ -42,6 +45,8 @@ public class MainScript : MonoBehaviour {
 			} else {
 				Instantiate (bomb, bombPos, Quaternion.identity);
 			}
+			//rend.material.shader = Shader.Find ("Standard");
+			//rend.material.SetColor ("_Emission", Color.red);
 
 			count++;
 			if (count == 5) {

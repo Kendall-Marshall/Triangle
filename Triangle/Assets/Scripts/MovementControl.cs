@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MovementControl : MonoBehaviour {
-
 	public GameObject Player;
 	public Sprite LossSprite;
 	public float finalSize;
@@ -20,7 +19,6 @@ public class MovementControl : MonoBehaviour {
 	private SpriteRenderer spr;
 
 	void Start () {
-		//myInstance = FinalScoreScreen.GetComponent<FinalScore> ();
 		spr = GetComponent<SpriteRenderer>();
 		if (check == true) {
 			StartCoroutine(ScaleOverTime (2));
@@ -37,7 +35,6 @@ public class MovementControl : MonoBehaviour {
 
 		do
 		{
-
 			if(MainScript.runCheck == true){
 					Destroy(Player);
 					break;
@@ -78,8 +75,6 @@ public class MovementControl : MonoBehaviour {
 		
 	IEnumerator ScaleAgainTime(float time)
 	{
-		//Player.SetActive (true);
-
 		spr.sprite = LossSprite;
 		Vector3 originalScale = Player.transform.localScale;
 		Vector3 destinationScale = new Vector3(finalSizeLoss, finalSizeLoss, finalSizeLoss);
@@ -113,6 +108,5 @@ public class MovementControl : MonoBehaviour {
 
 		enable.SetActive (true);
 		disable.SetActive (false);
-
 	}
 }

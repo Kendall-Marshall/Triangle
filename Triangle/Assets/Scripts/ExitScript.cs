@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ExitScript : MonoBehaviour {
-
 	public Button yesBtn;
 	public Button noBtn;
 	public GameObject ExitPanel;

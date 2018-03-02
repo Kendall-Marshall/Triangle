@@ -9,8 +9,6 @@ public class MouseClick : MonoBehaviour {
 	public AudioClip pop3;
 	public AudioSource src;
 
-
-
 	void OnMouseDown(){
 
 		int rand = Random.Range (0, 3);
