@@ -6,36 +6,69 @@ using UnityEngine.UI;
 public class BombMvmt : MonoBehaviour {
 	public GameObject Player;
 	public Sprite LossSprite;
+	public float finalSize;
 	public static bool check = false;
 	public static bool BombClickCheck = false;
+	public Text HighScoreText;
+	public GameObject enable;
+	public GameObject disable;
 
 	private SpriteRenderer spr;
 
 	void Start () {
 		spr = GetComponent<SpriteRenderer>();
 		if (check == true) {
-			StartCoroutine (BombScale ());
+			StartCoroutine (BombScaleIn ());
 		}
 	}
-	
-	// Update is called once per frame
-	IEnumerator BombScale(){
+
+	IEnumerator BombScaleIn(){
 		float currentTime = 0.0f;
+		Vector3 originalScale = Player.transform.localScale;
+		Vector3 destinationScale = new Vector3(finalSize, finalSize, finalSize);
 
-		do
-		{
-
-			if(MainScript.runCheck == true){
-				Destroy(Player);
+		do {
+			if (MainScript.runCheck == true) {
+				Destroy (Player);
 				break;
 			}
 
-			if(BombClickCheck == true){
-				
-				StartCoroutine(BombDeath());
+			if (BombClickCheck == true) {
+				StartCoroutine (BombDeath ());
 				break;
 			}
 
+			Player.transform.localScale = Vector3.Lerp (originalScale, destinationScale, currentTime / 2);
+			Player.transform.Rotate (Vector3.forward * 2);
+			currentTime += Time.deltaTime;
+			yield return null;
+		} while (currentTime <= 2);
+			
+		if (BombClickCheck == false) {
+			StartCoroutine (BombScaleOut());
+		}
+
+	}
+
+	IEnumerator BombScaleOut(){
+		float currentTime = 0.0f;
+		finalSize = 0.1f;
+		Vector3 originalScale = Player.transform.localScale;
+		Vector3 destinationScale = new Vector3(finalSize, finalSize, finalSize);
+
+		do {
+			if (MainScript.runCheck == true) {
+				Destroy (Player);
+				break;
+			}
+
+			if (BombClickCheck == true) {
+				StartCoroutine (BombDeath ());
+				break;
+			}
+
+			Player.transform.localScale = Vector3.Lerp (originalScale, destinationScale, currentTime / 2);
+			Player.transform.Rotate (Vector3.forward * -2);
 			currentTime += Time.deltaTime;
 			yield return null;
 		} while (currentTime <= 2);
@@ -44,24 +77,42 @@ public class BombMvmt : MonoBehaviour {
 			Player.SetActive (false);
 			Destroy (Player);
 		}
-
 	}
 
 	IEnumerator BombDeath(){
 		MainScript.runCheck = true;
 		float currentTime = 0.0f;
 		spr.sprite = LossSprite;
-		do
-		{
-			Debug.Log ("1234");
 
+		Vector3 originalScale = new Vector3(0.1f, 0.1f, 0.1f);
+		Vector3 destinationScale = new Vector3(0.3f, 0.3f, 0.3f);
+		Vector3 destinationScale1 = new Vector3(0.1f, 0.1f, 0.1f);
 
-			currentTime += Time.deltaTime;
-			yield return null;
-		} while (currentTime <= 5);
+		for (int i = 0; i < 2; i++) {
+			do {
+				Player.transform.localScale = Vector3.Lerp (originalScale, destinationScale, currentTime / 2);
+				currentTime += Time.deltaTime;
+				yield return null;
+			} while (currentTime <= 1f);
 
-		//MainScript.runCheck = true;
+			currentTime = 0.0f;
+			originalScale = Player.transform.localScale;
+			do {
+				Player.transform.localScale = Vector3.Lerp (originalScale, destinationScale1, currentTime / 2);
+				currentTime += Time.deltaTime;
+				yield return null;
+			} while (currentTime <= 1f);
+			currentTime = 0.0f;
+			originalScale = Player.transform.localScale;
+		}
 		Player.SetActive (false);
 		Destroy(Player);
+
+		int HighScore = FinalScore.ScoreReset();
+
+		HighScoreText.text = HighScore.ToString();
+
+		enable.SetActive (true);
+		disable.SetActive (false);
 	}
 }

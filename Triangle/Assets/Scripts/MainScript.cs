@@ -35,8 +35,13 @@ public class MainScript : MonoBehaviour {
 			Vector3 bombPos = new Vector3 (Random.Range (-2.2f, 2.2f), Random.Range (-4.5f, 2.7f), 0);
 			MovementControl.check = true;
 			BombMvmt.check = true;
-			Instantiate (obj, position, Quaternion.identity);
-			Instantiate (bomb, bombPos, Quaternion.identity);
+			BombMvmt.BombClickCheck = false;
+			int Rand = Random.Range (0, 6);
+			if (Rand > 1) {
+				Instantiate (obj, position, Quaternion.identity);
+			} else {
+				Instantiate (bomb, bombPos, Quaternion.identity);
+			}
 
 			count++;
 			if (count == 5) {
