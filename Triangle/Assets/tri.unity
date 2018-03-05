@@ -599,11 +599,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1017710679}
   bomb: {fileID: 1238703408}
-  panel: {fileID: 988758440}
   but: {fileID: 1492302413}
   Hide: {fileID: 184510050}
   Enable: {fileID: 1128811834}
   HighScoreText: {fileID: 1368538504}
+  Yellow: {fileID: 2100000, guid: c03b63b6769b3814095b7913bb97b88d, type: 2}
 --- !u!82 &586993946
 AudioSource:
   m_ObjectHideFlags: 0
@@ -999,6 +999,7 @@ GameObject:
   - component: {fileID: 988758443}
   - component: {fileID: 988758442}
   - component: {fileID: 988758441}
+  - component: {fileID: 988758445}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1066,12 +1067,25 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 988758440}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.17}
   m_LocalScale: {x: 0.6384518, y: 1, z: 1.0716617}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &988758445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 988758440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3af269c82768d94c8f9af0204bd12ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BgColor: 0
+  panel: {fileID: 988758440}
 --- !u!1 &990960996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1209,7 @@ GameObject:
   - component: {fileID: 1017710682}
   - component: {fileID: 1017710683}
   - component: {fileID: 1017710684}
+  - component: {fileID: 1017710685}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -1305,6 +1320,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1017710685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1017710679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1055570638
 GameObject:
   m_ObjectHideFlags: 0
