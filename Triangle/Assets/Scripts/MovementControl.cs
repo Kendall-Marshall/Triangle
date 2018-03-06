@@ -15,11 +15,13 @@ public class MovementControl : MonoBehaviour {
 	public Material Red;
 	public FinalScore myInstance;
 	public Text HighScoreText;
+    BackgroundColor bgCol;
 
-	private SpriteRenderer spr;
+    private SpriteRenderer spr;
 
 	void Start () {
-		spr = GetComponent<SpriteRenderer>();
+        bgCol = GameObject.Find("Plane").GetComponent<BackgroundColor>();
+        spr = GetComponent<SpriteRenderer>();
 		if (check == true) {
 			StartCoroutine(ScaleOverTime (2));
 		}
@@ -76,6 +78,7 @@ public class MovementControl : MonoBehaviour {
 	IEnumerator ScaleAgainTime(float time)
 	{
 		spr.sprite = LossSprite;
+        bgCol.loseColor();
 		Vector3 originalScale = Player.transform.localScale;
 		Vector3 destinationScale = new Vector3(finalSizeLoss, finalSizeLoss, finalSizeLoss);
 		Vector3 destinationScale1 = new Vector3(0.1f, 0.1f, 0.1f);

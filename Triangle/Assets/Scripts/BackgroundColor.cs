@@ -3,32 +3,62 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundColor : MonoBehaviour {
-    public int BgColor = 0;
+    public static int BgColor = 0;
     public static int BgColorCount = 0;
     public GameObject panel;
     Renderer rend;
 
+    public Color[] levels = new Color[3];
+
+    private float lerpCheck = 0;
+
     void Start()
     {
         rend = panel.GetComponent<Renderer>();
-        rend.material.color = Color.grey;
+        rend.material.color = levels[0];
+    }
+
+    public void resetColor()
+    {
+        rend.material.color = levels[0];
+    }
+
+    public void loseColor()
+    {
+        rend.material.color = Color.red;
     }
 
     void Update ()
     {
-        if (BgColorCount == 5)
+        if (BgColorCount == 3)
         {
             BgColor++;
             BgColorCount = 0;
+            lerpCheck = 0;
         }
 
-        if(BgColor == 1)
+        switch (BgColor)
         {
-            rend.material.color = Color.cyan;
+            case 1:
+                lerper(levels[BgColor-1], levels[BgColor]);
+                break;
+            case 2:
+                lerper(levels[BgColor - 1], levels[BgColor]);
+                break;
+            case 3:
+                lerper(levels[BgColor - 1], levels[BgColor]);
+                break;
+            default:
+                break;
         }
-        else if(BgColor == 2)
+    }
+
+    void lerper(Color oldCol, Color newCol)
+    {
+        if(lerpCheck <= 1)
         {
-            rend.material.color = Color.green;
+            lerpCheck += Time.deltaTime / 2.5f;
+            rend.material.color = Color.Lerp(oldCol, newCol, lerpCheck);
         }
-	}
+    }
 }

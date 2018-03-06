@@ -39,7 +39,7 @@ public class MainScript : MonoBehaviour {
 			MovementControl.check = true;
 			BombMvmt.check = true;
 			BombMvmt.BombClickCheck = false;
-			int Rand = Random.Range (0, 6);
+			int Rand = Random.Range (0, 10);
 			if (Rand > 1) {
 				Instantiate (obj, position, Quaternion.identity);
 			} else {

@@ -13,11 +13,13 @@ public class BombMvmt : MonoBehaviour {
 	public Text HighScoreText;
 	public GameObject enable;
 	public GameObject disable;
+    BackgroundColor bgCol;
 
-	private SpriteRenderer spr;
+    private SpriteRenderer spr;
 
 	void Start () {
-		spr = GetComponent<SpriteRenderer>();
+        bgCol = GameObject.Find("Plane").GetComponent<BackgroundColor>();
+        spr = GetComponent<SpriteRenderer>();
 		if (check == true) {
 			StartCoroutine (BombScaleIn ());
 		}
@@ -84,7 +86,8 @@ public class BombMvmt : MonoBehaviour {
 		MainScript.runCheck = true;
 		float currentTime = 0.0f;
 		spr.sprite = LossSprite;
-		Player.GetComponent<SpriteRenderer>().material = Red;
+        bgCol.loseColor();
+        Player.GetComponent<SpriteRenderer>().material = Red;
 
 		Vector3 originalScale = new Vector3(0.1f, 0.1f, 0.1f);
 		Vector3 destinationScale = new Vector3(0.3f, 0.3f, 0.3f);
