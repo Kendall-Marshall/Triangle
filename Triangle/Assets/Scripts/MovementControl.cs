@@ -78,7 +78,7 @@ public class MovementControl : MonoBehaviour {
 	IEnumerator ScaleAgainTime(float time)
 	{
 		spr.sprite = LossSprite;
-        bgCol.loseColor();
+        //bgCol.loseColor();
 		Vector3 originalScale = Player.transform.localScale;
 		Vector3 destinationScale = new Vector3(finalSizeLoss, finalSizeLoss, finalSizeLoss);
 		Vector3 destinationScale1 = new Vector3(0.1f, 0.1f, 0.1f);

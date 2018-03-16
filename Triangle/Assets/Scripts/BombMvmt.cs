@@ -86,7 +86,7 @@ public class BombMvmt : MonoBehaviour {
 		MainScript.runCheck = true;
 		float currentTime = 0.0f;
 		spr.sprite = LossSprite;
-        bgCol.loseColor();
+        //bgCol.loseColor();
         Player.GetComponent<SpriteRenderer>().material = Red;
 
 		Vector3 originalScale = new Vector3(0.1f, 0.1f, 0.1f);

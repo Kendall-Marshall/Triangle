@@ -8,7 +8,9 @@ public class BackgroundColor : MonoBehaviour {
     public GameObject panel;
     Renderer rend;
 
-    public Color[] levels = new Color[3];
+    public Color[] levels = new Color[4];
+
+    public Color Loss;
 
     private float lerpCheck = 0;
 
@@ -25,7 +27,7 @@ public class BackgroundColor : MonoBehaviour {
 
     public void loseColor()
     {
-        rend.material.color = Color.red;
+        rend.material.color = Loss;
     }
 
     void Update ()
@@ -37,15 +39,34 @@ public class BackgroundColor : MonoBehaviour {
             lerpCheck = 0;
         }
 
+        
         switch (BgColor)
         {
             case 1:
-                lerper(levels[BgColor-1], levels[BgColor]);
+                lerper(levels[BgColor - 1], levels[BgColor]);
                 break;
             case 2:
                 lerper(levels[BgColor - 1], levels[BgColor]);
                 break;
             case 3:
+                lerper(levels[BgColor - 1], levels[BgColor]);
+                break;
+            case 4:
+                lerper(levels[BgColor - 1], levels[BgColor]);
+                break;
+            case 5:
+                lerper(levels[BgColor - 1], levels[BgColor]);
+                break;
+            case 6:
+                lerper(levels[BgColor - 1], levels[BgColor]);
+                break;
+            case 7:
+                lerper(levels[BgColor - 1], levels[BgColor]);
+                break;
+            case 8:
+                lerper(levels[BgColor - 1], levels[BgColor]);
+                break;
+            case 9:
                 lerper(levels[BgColor - 1], levels[BgColor]);
                 break;
             default:
