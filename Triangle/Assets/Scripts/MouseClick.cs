@@ -25,7 +25,8 @@ public class MouseClick : MonoBehaviour {
 		if (MainScript.runCheck == false) {
 			src.Play ();
 			Destroy (gameObject);
-			Score.score++;
+            //Destroy(transform.parent.gameObject);
+            Score.score++;
             BackgroundColor.BgColorCount++;
 		}
 	}

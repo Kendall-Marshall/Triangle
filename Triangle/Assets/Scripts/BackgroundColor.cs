@@ -32,7 +32,7 @@ public class BackgroundColor : MonoBehaviour {
 
     void Update ()
     {
-        if (BgColorCount == 3)
+        if (BgColorCount == 10)
         {
             BgColor++;
             BgColorCount = 0;

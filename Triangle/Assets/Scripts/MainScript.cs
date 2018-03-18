@@ -42,11 +42,11 @@ public class MainScript : MonoBehaviour {
 			int Rand = Random.Range (0, 10);
 			if (Rand > 1) {
 				Instantiate (obj, position, Quaternion.identity);
-			} else {
+                count++;
+            } else {
 				Instantiate (bomb, bombPos, Quaternion.identity);
 			}
 
-			count++;
 			if (count == 5) {
 				level -= 0.025f;
 				count = 0;
